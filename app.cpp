@@ -316,6 +316,12 @@ void App::Run() {
 
     HideCursor();
 
+    // login ready hook
+    string loginReady = cfg->getOption("loginready_cmd");
+    if (loginReady != "") {
+        system(loginReady.c_str());
+    }
+
     // Create panel
     LoginPanel = new Panel(Dpy, Scr, Root, cfg, themedir);
     bool firstloop = true; // 1st time panel is shown (for automatic username)
